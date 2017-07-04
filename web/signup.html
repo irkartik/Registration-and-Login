@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Log In</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+	<div class="container1">
+		<div class="login">
+		<form id="form_id" method="post" name="myform" action="register" onsubmit="return checkform(this);">
+		<table>
+		<tr>
+		<td>
+			<label>Name: </label>
+			<div class="form-group form-inline">
+			<input type="text" name="firstname" class="form-control" id="firstname" placeholder="First Name" onblur ="firstnamecheck();" />
+			<input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last Name" onblur =";lastnamecheck();" />
+			</div>
+		</td>
+		<td>
+			<p class="text-warning" id="firstname-error"></p>
+			<p class="text-warning" id="lastname-error"></p>
+
+		</td>
+		</tr>
+
+		<tr>
+		<td>
+			<label>Date of Birth: </label>
+			<div class="form-group">
+				<input type="date" name="dob" id="dob" class="form-control" placeholder="Date of Birth" onblur="agecheck();" />
+			</div>
+		</td>
+		<td>
+			<p class="text-warning" id="age-error"><!-- Age should be above 21 --></p>
+		</td>
+		</tr>
+
+		<tr>
+		<td>
+			<label>Contact: </label>
+			<div class="form-group form-inline">
+			<input type="text" name="email" id="email" class="form-control" placeholder="Email" onblur="emailcheck();" />
+			<input type="text" name="mobilenumber" id="mobile" class="form-control" placeholder="Mobile Number" onblur="mobilecheck();"/>
+			</div>
+		</td>
+		<td>
+			<p class="text-warning" id="email-error"></p>
+			<p class="text-warning" id="mobile-error"></p>
+		</td>
+
+		</tr>
+
+		<tr>
+		<td>
+			<label>Educational Details: </label>
+			<div class="form-group form-inline">
+			<input type="text" name="graduation" id="grad" placeholder="Graduation Year" class="form-control" onblur="checkeducation();"/>
+			<input type="text" name="postgraduation" id="postgrad" placeholder="Post Graduation Year" class="form-control" onblur="checkeducation();"><br>
+			</div>
+		</td>
+		<td>
+			<p class="text-warning" id="qualification-error"></p>
+		</td>
+		</tr>
+
+		<tr>
+		<td>
+			<label>Address: </label>
+			<div class="form-group">
+			<textarea id="address" name="address" class="form-control" rows="5" cols="50" onblur="addresscheck();"></textarea>
+			</div>
+		</td>
+		<td>
+			<p class="text-warning" id="address-error"></p>
+		</td>
+		</tr>
+
+		<tr>
+		<td>
+			<label>Security Credentials: </label>
+			<div class="form-group form-inline">
+			<input type="text" name="username" class="form-control" id="username" placeholder="Username" onblur="usernamecheck();"/>
+			<input type="password" name="password" id="password" class="form-control" placeholder="Password" onblur="passwordcheck();" />
+			</div>
+		</td>
+		<td>
+			<p class="text-warning" id="username-error"></p>
+			<p class="text-warning" id="password-error"></p>
+		</td>
+		</tr>
+		</table>
+
+			<button type="submit" class="btn btn-secondary" value="Signup" id="submit" onclick="return checkform();">Submit</button>
+		</form>
+		</div>
+	</div>
+
+</body>
+</html>
