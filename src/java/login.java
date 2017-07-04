@@ -46,4 +46,12 @@ public class login extends HttpServlet {
             rs.include(request, response);
         }
     }
+    
+        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        RequestDispatcher rs = request.getRequestDispatcher("index.html");
+        rs.include(request, response);      
+    }
 }

@@ -8,6 +8,11 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -41,6 +46,16 @@ public class register extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
+        String dob = request.getParameter("dob");
+        java.sql.Date sqlDate =  java.sql.Date.valueOf(dob);
+        
+        
+        
+        
+        
+        
+        
+        
          try{
         
         //loading drivers for mysql
@@ -51,7 +66,7 @@ public class register extends HttpServlet {
                      ("jdbc:mysql://localhost:3306/database","root","toor");
 
         PreparedStatement ps = con.prepareStatement
-                  ("insert into users values(?,?,?,?,?,?,?,?,?)");
+                  ("insert into users values(?,?,?,?,?,?,?,?,?,?)");
         
 
 
@@ -65,12 +80,15 @@ public class register extends HttpServlet {
         ps.setString(7, address);
         ps.setString(8, username);
         ps.setString(9, password);
-      
+        ps.setDate(10, sqlDate);
+        
         int i = ps.executeUpdate();
         
           if (i>0)
           {
-            out.println("You are sucessfully registered");
+            request.setAttribute("username", username);
+            request.setAttribute("password", password);
+            request.getRequestDispatcher("/WEB-INF/registered.jsp").forward(request, response);
           }
         
         }

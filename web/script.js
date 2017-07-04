@@ -20,14 +20,19 @@ var minAge = 18;
      givenDate.getMonth() == birthDate.getMonth() && givenDate.getDate() < birthDate.getDate()) {
             years--;
         }
-
-    if (years<minAge){
-    	document.getElementById('age-error').innerHTML = "Age should be above 21";
-		document.getElementById('dob').style.backgroundColor="#a94442";
+    if (dt1 !== ""){
+        if (years<minAge){
+            document.getElementById('age-error').innerHTML = "Age should be above 21";
+            document.getElementById('dob').style.backgroundColor="#a94442";
+        }
+        else{
+            document.getElementById('age-error').innerHTML = "";
+            document.getElementById('dob').style.backgroundColor="#ffffff";
+        }
     }
-    else{
-    	document.getElementById('age-error').innerHTML = "";
-		document.getElementById('dob').style.backgroundColor="#ffffff";
+    else {
+        document.getElementById('age-error').innerHTML = "Date of Birth cannot be blank";
+        document.getElementById('dob').style.backgroundColor="#a94442";
     }
  }
 
@@ -233,10 +238,11 @@ function checkform(){
 	var username = document.getElementById("username").value;
 	var password = document.getElementById("password").value;
 
-	if (firstname == "" || lastname == "" || mobile == "" || grad =="" || postgrad=="" || email == "" || address == "" || username=="" || password == "" || date == ""){
-		alert("All Fields Required!")
+	if (firstname == "" || lastname == "" || mobile == "" || grad =="" || postgrad=="" || email == "" || address == "" || username=="" || password == "" || dob == ""){
+		alert("All Fields Required!");
 		return false;
 	}
-	else return true;
+	else {
+            return true;
+        }
 }
-

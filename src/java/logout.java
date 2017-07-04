@@ -32,6 +32,12 @@ public class logout extends HttpServlet {
             HttpSession session=request.getSession();  
             session.invalidate();  
               
-            out.print("You are successfully logged out!");  
+            out.print("<p class='form-control text-danger' style='text-align:center'>");
+            out.print("You have been successfully logged out!");
+            out.print("</p>");
+            
+            RequestDispatcher rs = request.getRequestDispatcher("index.html");
+            rs.include(request, response);
+            
     }
 }

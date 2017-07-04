@@ -29,25 +29,29 @@ public class welcome extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String firstname= null;
+        String lastname = null;
         String name = request.getParameter("username");
         
         try{
         Class.forName("com.mysql.jdbc.Driver");
-        Connection  con = DriverManager.getConnection
+        Connection con = DriverManager.getConnection
                      ("jdbc:mysql://localhost:3306/database","root","toor");
-        PreparedStatement s = con.prepareStatement("select firstname from users where username = ?");
+        PreparedStatement s = con.prepareStatement("select firstname, lastname from users where username = ?");
         s.setString(1, name);
         
         ResultSet rs = s.executeQuery();
         if (rs.next())
             firstname =  rs.getString("firstname");
+            lastname = rs.getString("lastname");
         
         }catch (Exception se)
         {
             se.printStackTrace();
         }
         
-        out.println("<p class='login'>Welcome Back " + firstname +"</p>");
-        out.println("<a href='logout'>Logout!</a>");
+        request.setAttribute("username", name);
+        request.setAttribute("firstname", firstname);
+        request.setAttribute("lastname", lastname);
+        request.getRequestDispatcher("/WEB-INF/loggedin.jsp").forward(request, response);
     }
 }
